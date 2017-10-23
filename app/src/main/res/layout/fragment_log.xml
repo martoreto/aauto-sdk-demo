@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LogFragment">
+
+    <TextView
+        android:id="@+id/log_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/car_card_bottom_margin"
+        android:layout_marginLeft="@dimen/car_standard_margin"
+        android:layout_marginRight="@dimen/car_standard_margin"
+        android:layout_marginTop="@dimen/car_card_margin"
+        android:fontFamily="monospace"
+        android:scrollbars="horizontal|vertical"
+        android:text="Log:"
+        android:textAppearance="@style/CarMicro" />
+</FrameLayout>

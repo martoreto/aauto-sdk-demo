@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Android Auto SDK Demo</string>
+    <string name="car_service_name">AA SDK Demo</string>
+    <string name="demo_title">Home</string>
+    <string name="menu_debug_title">Debug</string>
+    <string name="menu_exlap_stats_log_title">Show log</string>
+    <string name="menu_test_notification_title">Test notification</string>
+</resources>
