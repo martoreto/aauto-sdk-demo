@@ -16,6 +16,7 @@ import com.google.android.apps.auto.sdk.CarToast;
 import com.google.android.apps.auto.sdk.CarUiController;
 import com.google.android.apps.auto.sdk.MenuController;
 import com.google.android.apps.auto.sdk.MenuItem;
+import com.google.android.apps.auto.sdk.StatusBarController;
 import com.google.android.apps.auto.sdk.notification.CarNotificationExtender;
 
 class MainCarActivity extends CarActivity {
@@ -87,6 +88,10 @@ class MainCarActivity extends CarActivity {
         MenuController menuController = carUiController.getMenuController();
         menuController.setRootMenuAdapter(mainMenu);
         menuController.showMenuButton();
+
+        StatusBarController statusBarController = carUiController.getStatusBarController();
+        statusBarController.setAppBarAlpha(0.5f);
+        statusBarController.setAppBarBackgroundColor(0xffff0000);
 
         getSupportFragmentManager().registerFragmentLifecycleCallbacks(mFragmentLifecycleCallbacks,
                 false);
