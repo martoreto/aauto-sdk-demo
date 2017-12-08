@@ -19,7 +19,7 @@ import com.google.android.apps.auto.sdk.MenuItem;
 import com.google.android.apps.auto.sdk.StatusBarController;
 import com.google.android.apps.auto.sdk.notification.CarNotificationExtender;
 
-class MainCarActivity extends CarActivity {
+public class MainCarActivity extends CarActivity {
     private static final String TAG = "MainCarActivity";
 
     static final String MENU_HOME = "home";
