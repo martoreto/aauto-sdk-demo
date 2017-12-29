@@ -1,6 +1,7 @@
 package com.github.martoreto.aademo;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ public class MainCarActivity extends CarActivity {
     private static final String CURRENT_FRAGMENT_KEY = "app_current_fragment";
 
     private static final int TEST_NOTIFICATION_ID = 1;
+    private static final String NOTIFICATION_CHANNEL_ID = "car";
 
     private String mCurrentFragmentTag;
     private Handler mHandler = new Handler();
@@ -41,6 +43,18 @@ public class MainCarActivity extends CarActivity {
     public void onCreate(Bundle bundle) {
         setTheme(R.style.AppTheme_Car);
         super.onCreate(bundle);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel mChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID,
+                    getString(R.string.notification_channel_name),
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            mChannel.setDescription(getString(R.string.notification_channel_description));
+            NotificationManager mNotificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            assert mNotificationManager != null;
+            mNotificationManager.createNotificationChannel(mChannel);
+        }
+
         setContentView(R.layout.activity_car_main);
 
         CarUiController carUiController = getCarUiController();
@@ -169,7 +183,8 @@ public class MainCarActivity extends CarActivity {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Notification notification = new NotificationCompat.Builder(MainCarActivity.this)
+                Notification notification = new NotificationCompat.Builder(MainCarActivity.this,
+                        NOTIFICATION_CHANNEL_ID)
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle("Test notification")
                         .setContentText("This is a test notification")
@@ -186,6 +201,7 @@ public class MainCarActivity extends CarActivity {
 
                 NotificationManager notificationManager =
                         (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                assert notificationManager != null;
                 notificationManager.notify(TAG, TEST_NOTIFICATION_ID, notification);
 
                 CarNotificationSoundPlayer soundPlayer = new CarNotificationSoundPlayer(

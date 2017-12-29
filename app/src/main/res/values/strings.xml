@@ -5,4 +5,6 @@
     <string name="menu_debug_title">Debug</string>
     <string name="menu_exlap_stats_log_title">Show log</string>
     <string name="menu_test_notification_title">Test notification</string>
+    <string name="notification_channel_name">Car</string>
+    <string name="notification_channel_description">Notifications displayed in Android Auto.</string>
 </resources>
